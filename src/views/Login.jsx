@@ -1,19 +1,21 @@
+import logo from "../res/logo.png";
+
 const Login = function () {
 
   return (
     <div>
-      <div class="container" id="bloco">
-        <div class="row d-flex justify-content-center mt-3 w-100">
-          <div class="col-md-6 login" align="center">
+      <div className="container" id="bloco">
+        <div className="row d-flex justify-content-center mt-3 w-100">
+          <div className="col-md-6 login" align="center">
 
           </div>
-          <div class="col-md-6 login" align="center">
-            <img src="ENTREGA (3).png" alt="" />
+          <div className="col-md-6 login" align="center">
+            <img src={logo} alt="logo" />
 
 
-            <hr class="mt-5" />
-            <button class="btnGoogle"><i class="fa fa-google"></i> Entrar com Google</button>
-            <button class="btnGoogle"><i class="fa fa-envelope"></i> Entrar com Email</button>
+            <hr className="mt-5" />
+            <button className="btnGoogle"><i className="fa fa-google"></i> Entrar com Google</button>
+            <button className="btnGoogle"><i className="fa fa-envelope"></i> Entrar com Email</button>
 
 
           </div>
