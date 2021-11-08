@@ -1,7 +1,14 @@
+
+import { Menu } from '../components/Menu';
+
+import styles from '../styles/home.module.css';
+
 export default function Home(){
   return (
-    <>
-      <h1>Home page</h1>
-    </>
+    <div className={styles.app}>
+      <Menu />
+
+      
+    </div>
   )
 }
