@@ -1,36 +1,14 @@
-import db from "../services/database";
-import { onValue, get, child, ref } from "firebase/database";
-import { useEffect, useState } from "react";
 
-const Home = function () {
-    const [pessoas, setPessoas] = useState([]);
+import { Menu } from '../components/Menu';
 
-    useEffect(() => {
-        onValue(ref(db, '/Pessoa'), response => {
-            const data = response.val();
+import styles from '../styles/home.module.css';
 
-            const listPessoas = [];
-            if (data) {
-                for (let id in data) {
-                    listPessoas.push(data[id]);
-                }
-                setPessoas(listPessoas)
-            }
-        })
-    }, []);
+export default function Home(){
+  return (
+    <div className={styles.app}>
+      <Menu />
 
-    return (
-        <table>
-            {
-                pessoas.map((pessoa, i) => 
-                    <tr key={i}>
-                        <td>{pessoa.nome_completo}</td>
-                    </tr>
-                )
-            }
-        </table>
-    );
-
+      
+    </div>
+  )
 }
-
-export default Home;

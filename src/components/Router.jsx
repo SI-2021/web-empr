@@ -1,16 +1,14 @@
 import { Route, Switch } from "react-router";
-import Home from "../views/Home";
-import Login from "../views/Login";
 
-const Router = function() {
+//Pages
+import Login from '../views/Login';
+import Home from '../views/Home';
 
-    return (
-        <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route path="/login" component={Login} />
-        </Switch>
-    );
-
+export default function Router() {
+  return (
+    <Switch>
+      <Route exact path="/" component={Login} />
+      <Route path="/home" component={Home} />
+    </Switch>
+  );
 }
-
-export default Router;
