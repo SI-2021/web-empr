@@ -5,14 +5,14 @@
 }
 
 :root{
-  --Background: #141414;
-  --Branco: #FFFFFF;
-  --Check: #00880E;
-  --Cor1: #04060D;
-  --Cor2: #033E8C;
-  --Cor3: #023373;
-  --Cor4: #155FBF;
-  --Cor5: #377BA6;
+  --background: #141414;
+  --white: #FFFFFF;
+  --check: #00880E;
+  --color1: #04060D;
+  --color2: #033E8c;
+  --color3: #023373;
+  --color4: #155FBF;
+  --color5: #377BA6;
 }
 
 body {
