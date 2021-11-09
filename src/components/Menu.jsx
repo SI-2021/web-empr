@@ -15,7 +15,7 @@ export function Menu(){
 
   // Menu suspenso
   const [state, setState] = React.useState({
-    top: false,
+    left: false,
     left: false,
     bottom: false,
     right: false,
@@ -55,15 +55,15 @@ export function Menu(){
     <div className={styles.container}>
       <div className={styles.bar}>
         <div className={styles.sideLeft}>
-          <button className={styles.buttonMenus} onClick={toggleDrawer('top', true)}>
+          <button className={styles.buttonMenus} onClick={toggleDrawer('left', true)}>
             <MenuIcon color="white" fontSize="large" />
           </button>
           <Drawer
-            anchor={'top'}
-            open={state['top']}
-            onClose={toggleDrawer('top', false)}
+            anchor={'left'}
+            open={state['left']}
+            onClose={toggleDrawer('left', false)}
           >
-            { state.top && (
+            { state.left && (
               <>
                 <div className={styles.drawer}>
                   <div className={styles.background}></div>
@@ -125,7 +125,7 @@ export function Menu(){
         </button>
         <Popover
           id="mouse-over-popover"
-          sx={{ pointerEvents: 'none', }} open={open} anchorEl={anchorEl} anchorOrigin={{ vertical: 'bottom', horizontal: 'left', }} transformOrigin={{ vertical: 'top', horizontal: 'left', }}
+          sx={{ pointerEvents: 'none', }} open={open} anchorEl={anchorEl} anchorOrigin={{ vertical: 'bottom', horizontal: 'left', }} transformOrigin={{ vertical: 'left', horizontal: 'left', }}
           onClose={handlePopoverClose}
           disableRestoreFocus
         >
