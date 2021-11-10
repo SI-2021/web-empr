@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory,Link } from "react-router-dom";
 
 //Material UI
 import List from "@material-ui/core/List";
@@ -23,6 +24,7 @@ import {
 import styles from "../styles/components/menu.module.css";
 
 export function Menu() {
+  const history = useHistory();
   // Menu suspenso
   const [state, setState] = useState({
     top: false,
@@ -53,7 +55,7 @@ export function Menu() {
             <MenuIcon color="white" fontSize="large" />
           </button>
           <nav>
-            <a href="/home">Home</a>
+            <Link to={'home'}>Home</Link>
           </nav>
         </div>
 
@@ -68,7 +70,7 @@ export function Menu() {
         ModalProps={{
           keepMounted: true
         }}
-        className={`${styles.drawer}`}
+        className={styles.drawer}
       >
         {state.left && ( //Drawer menu vertical do lado esquerdo
           <>
@@ -121,7 +123,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => {}}>
+                <ListItemButton onClick={() => {history.push('perfil')}}>
                   <ListItemIcon>
                     <AccountIcon color="white" />
                   </ListItemIcon>

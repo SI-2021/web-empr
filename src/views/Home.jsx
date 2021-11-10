@@ -5,17 +5,12 @@ import styles from "../styles/home.module.css";
 export default function Home() {
   return (
     <div className={styles.app}>
-      <Menu>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </Menu>
+      <Menu />
+
+      <div>
+        <h1>Home</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nihil neque odio iste eaque, rem facere est ut itaque quas enim iure dolore saepe eveniet aliquid, nesciunt aliquam. At, voluptate.</p>
+      </div>
     </div>
   );
 }
