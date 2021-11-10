@@ -47,6 +47,13 @@ ListItemButton {
   background: none;
 }
 
+:root {
+  &.MuiPaper-root {
+    background-color: none;
+  }
+}
+
 .drawer {
-  background: none;
+  opacity: 0.9;
+  color: none;
 }

@@ -17,6 +17,8 @@ import IconButton from "@material-ui/core/IconButton";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Box from "@material-ui/core/Box";
 
+import { makeStyles } from "@material-ui/styles";
+
 //Icones
 import {
   Menu as MenuIcon,
@@ -31,8 +33,6 @@ import {
 import styles from "../styles/components/menu.module.css";
 
 export function Menu(children) {
-  // const history = useHistory();
-
   // Menu suspenso
   const [state, setState] = useState({
     top: false,
@@ -78,7 +78,7 @@ export function Menu(children) {
         ModalProps={{
           keepMounted: true
         }}
-        sx={{ backgroundColor: "none", opacity: "0.9", color: "none" }}
+        className={`${styles.drawer}`}
       >
         {state.left && ( //Drawer menu vertical do lado esquerdo
           <>
