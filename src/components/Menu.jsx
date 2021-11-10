@@ -97,7 +97,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => {}}>
+                <ListItemButton onClick={() => history.push('postagem')}>
                   <ListItemIcon>
                     <AddIcon color="white" />
                   </ListItemIcon>
@@ -111,7 +111,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => {}}>
+                <ListItemButton onClick={() => history.push('pagamentos')}>
                   <ListItemIcon>
                     <MoneyIcon color="white" />
                   </ListItemIcon>
@@ -123,7 +123,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => {history.push('perfil')}}>
+                <ListItemButton onClick={() => history.push('perfil')}>
                   <ListItemIcon>
                     <AccountIcon color="white" />
                   </ListItemIcon>
