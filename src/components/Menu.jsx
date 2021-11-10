@@ -1,12 +1,6 @@
-import React, { Children, useState } from "react";
+import React, { useState } from "react";
 
 //Material UI
-import Toolbar from "@material-ui/core";
-import AppBar from "@material-ui/core";
-import Divider from "@material-ui/core";
-import DrawerHeader from "@material-ui/core";
-import Main from "@material-ui/core";
-
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemButton from "@material-ui/core/ListItemButton";
@@ -14,10 +8,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Box from "@material-ui/core/Box";
-
-import { makeStyles } from "@material-ui/styles";
 
 //Icones
 import {
@@ -32,7 +22,7 @@ import {
 //Estilos
 import styles from "../styles/components/menu.module.css";
 
-export function Menu(children) {
+export function Menu() {
   // Menu suspenso
   const [state, setState] = useState({
     top: false,
@@ -105,7 +95,7 @@ export function Menu(children) {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton href="/simple-list" onClick={() => {}}>
+                <ListItemButton onClick={() => {}}>
                   <ListItemIcon>
                     <AddIcon color="white" />
                   </ListItemIcon>
@@ -119,7 +109,7 @@ export function Menu(children) {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton href="/simple-list" onClick={() => {}}>
+                <ListItemButton onClick={() => {}}>
                   <ListItemIcon>
                     <MoneyIcon color="white" />
                   </ListItemIcon>
@@ -131,7 +121,7 @@ export function Menu(children) {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton href="/simple-list" onClick={() => {}}>
+                <ListItemButton onClick={() => {}}>
                   <ListItemIcon>
                     <AccountIcon color="white" />
                   </ListItemIcon>
