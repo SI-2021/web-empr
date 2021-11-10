@@ -18,7 +18,11 @@ export default function Login() {
     history.push("home");
   }
 
-  return (
+  return (<>
+    <head>
+      <title>Pack Delivery</title>
+    </head>
+
     <div className={styles.container}>
       <div className={styles.sideLeft}>
         <div className={styles.contentLogo}>
@@ -51,5 +55,5 @@ export default function Login() {
         </div>
       </div>
     </div>
-  );
+  </>);
 }

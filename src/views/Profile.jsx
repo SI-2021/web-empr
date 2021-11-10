@@ -7,48 +7,50 @@ import { TextField } from "@material-ui/core";
 import styles from "../styles/profile.module.css";
 
 export default function Profile() {
-  return (
-    <div>
-      <Menu />
-      <div className={styles.app}>
-        <div className={styles.container}>
-          <div className={styles.sides}>
-            <span>Minhas Informações</span>
-            <div>
-              <TextField
-                id="outlined-basic"
-                label="Nome"
-                variant="outlined"
-                size="small"
-              />
-              <TextField
-                id="outlined-basic"
-                label="Sobrenome"
-                variant="outlined"
-                size="small"
-              />
-            </div>
-            <div>
-              <TextField
-                id="outlined-basic"
-                label="CPF"
-                variant="outlined"
-                size="small"
-              />
-              <TextField
-                id="outlined-basic"
-                label="RG"
-                variant="outlined"
-                size="small"
-              />
-            </div>
+  return (<>
+    <head>
+      <title>Perfil | Pack Delivery</title>
+    </head>
+
+    <Menu />
+    <div className={styles.app}>
+      <div className={styles.container}>
+        <div className={styles.sides}>
+          <span>Minhas Informações</span>
+          <div>
+            <TextField
+              id="outlined-basic"
+              label="Nome"
+              variant="outlined"
+              size="small"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Sobrenome"
+              variant="outlined"
+              size="small"
+            />
           </div>
-
-          <div className={styles.dividerBar}></div>
-
-          <div className={styles.sides}></div>
+          <div>
+            <TextField
+              id="outlined-basic"
+              label="CPF"
+              variant="outlined"
+              size="small"
+            />
+            <TextField
+              id="outlined-basic"
+              label="RG"
+              variant="outlined"
+              size="small"
+            />
+          </div>
         </div>
+
+        <div className={styles.dividerBar}></div>
+
+        <div className={styles.sides}></div>
       </div>
     </div>
-  );
+  </>);
 }
