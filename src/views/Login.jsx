@@ -1,14 +1,15 @@
 import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import { Email } from '@material-ui/icons';
+import { login } from "../services/auth";
 
 import styles from '../styles/login.module.css';
 
 export default function Login() {
 
 
-  function handlerLoginWithEmail(){
-    //Codigo login com email no firebase
+  async function handlerLoginWithEmail(){
+    await login();
   }
   
   function handlerLoginWithGoogle(){
@@ -33,7 +34,7 @@ export default function Login() {
           <Button 
             variant="contained"
             startIcon={<Email />}
-            onClick={() => handlerLoginWithEmail}
+            onClick={handlerLoginWithEmail}
           >
             Entrar com E-mail
           </Button>
@@ -41,7 +42,7 @@ export default function Login() {
           <Button 
             variant="contained"
             startIcon={<img src="google.svg" height="16px" alt="G" />}
-            onClick={() => handlerLoginWithGoogle}
+            onClick={handlerLoginWithGoogle}
           >
             Entrar com Google
           </Button>
