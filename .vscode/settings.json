@@ -1,5 +1,3 @@
 {
-  "editor.fontFamily": "MonoLisa, Menlo, Monaco, 'Courier New', monospace",
-  "files.autoSave": "onWindowChange",
-  "editor.fontSize": 13
+  "files.autoSave": "onWindowChange"
 }
