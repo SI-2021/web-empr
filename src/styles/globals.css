@@ -4,19 +4,19 @@
   box-sizing: border-box;
 }
 
-:root{
+:root {
   --background: #141414;
-  --white: #FFFFFF;
-  --check: #00880E;
-  --color1: #04060D;
-  --color2: #033E8c;
+  --white: #ffffff;
+  --check: #00880e;
+  --color1: #04060d;
+  --color2: #033e8c;
   --color3: #023373;
-  --color4: #155FBF;
-  --color5: #377BA6;
+  --color4: #155fbf;
+  --color5: #377ba6;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 400;
 }
