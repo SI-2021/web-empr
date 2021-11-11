@@ -16,12 +16,14 @@ export default function Profile() {
   const [surname, setSurname] = useState();
   const [cpf, setCpf] = useState();
   const [rg, setRg] = useState();
+  //Endereço
   const [address, setAddress] = useState();
   const [city, setCity] = useState();
   const [state, setState] = useState();
   const [country, setCountry] = useState();
   const [complement, setComplement] = useState();
   const [cep, setCep] = useState();
+  //Contato
   const [email, setEmail] = useState();
   const [phoneNumber, setPhone] = useState();
   const [phoneNumber2, setPhone2] = useState();
