@@ -1,21 +1,9 @@
 import * as React from 'react';
-import Button from '@material-ui/core/Button';
-import { Email } from '@material-ui/icons';
-import { login } from "../services/auth";
+import LoginUI from "../components/LoginUI";
 
 import styles from '../styles/login.module.css';
 
 export default function Login() {
-
-
-  async function handlerLoginWithEmail(){
-    await login();
-  }
-  
-  function handlerLoginWithGoogle(){
-    //Codigo login com email no firebase
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.sideLeft}>
@@ -30,23 +18,7 @@ export default function Login() {
       <div className={styles.sideRight}>
         <p>Breve descrição...</p>
 
-        <div className={styles.buttons}>
-          <Button 
-            variant="contained"
-            startIcon={<Email />}
-            onClick={handlerLoginWithEmail}
-          >
-            Entrar com E-mail
-          </Button>
-
-          <Button 
-            variant="contained"
-            startIcon={<img src="google.svg" height="16px" alt="G" />}
-            onClick={handlerLoginWithGoogle}
-          >
-            Entrar com Google
-          </Button>
-        </div>
+        <LoginUI />
       </div>
     </div>
   )
