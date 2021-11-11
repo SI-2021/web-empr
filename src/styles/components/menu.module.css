@@ -25,9 +25,12 @@ a {
 
 .sideLeft {
   display: flex;
-
   gap: 31px;
+  align-items: center;
+}
 
+.sideRight {
+  display: flex;
   align-items: center;
 }
 
@@ -50,4 +53,5 @@ ListItemButton {
 .drawer {
   opacity: 0.9;
   color: none;
+  background: none !important;
 }

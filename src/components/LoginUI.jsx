@@ -1,7 +1,7 @@
 import { useHistory } from "react-router";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-import auth from "../services/auth";
+import { auth } from "../services/auth";
 import {
     EmailAuthProvider,
     GoogleAuthProvider
@@ -10,13 +10,14 @@ import {
 import db from "../services/database";
 import { ref, set, child, get } from "firebase/database";
 
+import '../styles/components/loginButton.css';
+
 export default function Logar() {
     const history = useHistory();
 
     const uiConfig = {
         callbacks: {
             signInSuccessWithAuthResult: function (authResult) {
-                console.log(authResult.user)
 
                 // Tenta achar o usuário no banco
                 get(child(ref(db), `/Pessoa/${authResult.user.uid}`))
@@ -49,6 +50,6 @@ export default function Logar() {
     }
 
     return (
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
     );
 }

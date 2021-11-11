@@ -1,0 +1,40 @@
+
+.firebaseui-idp-button, .firebaseui-tenant-button, .mdl-button  {
+  background: var(--color2) !important;
+  border-radius: .2rem !important;
+}
+
+.firebaseui-idp-button:hover {
+  background: var(--color3) !important;
+}
+
+.firebaseui-idp-text {
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  color: var(--white) !important;
+}
+
+.firebaseui-text{
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+}
+
+.firebaseui-card-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: .5rem !important;
+}
+
+.mdl-button--primary.mdl-button--primary {
+  color: var(--white) !important;
+}
+
+/* .teste {
+  background: var(--color2) !important;
+  border-radius: .5rem !important;
+  padding: .3rem 1rem !important;
+  border: 1px solid #030303 !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  color: var(--white) !important;
+} */
