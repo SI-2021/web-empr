@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Menu } from "../components/Menu";
 
@@ -10,7 +10,7 @@ import styles from "../styles/profile.module.css";
 
 export default function Profile() {
   const history = useHistory();
-
+  
   // Dados do usuário
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
