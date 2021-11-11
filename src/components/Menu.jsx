@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory,Link } from "react-router-dom";
 
+import { auth } from '../services/auth';
+
 //Material UI
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -9,11 +11,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
+import { Menu as MenuAppBar, MenuItem } from '@material-ui/core';
 
 //Icones
 import {
   Menu as MenuIcon,
-  Settings as ConfigIcon,
   Add as AddIcon,
   AttachMoney as MoneyIcon,
   AccountCircle as AccountIcon,
@@ -25,6 +27,7 @@ import styles from "../styles/components/menu.module.css";
 
 export function Menu() {
   const history = useHistory();
+
   // Menu suspenso
   const [state, setState] = useState({
     top: false,
@@ -44,6 +47,25 @@ export function Menu() {
     setState({ ...state, [anchor]: open });
   };
 
+  //Menu profile
+  const [stateMenuProfile, setStateMenuProfile] = React.useState(null);
+
+  const handleMenu = (event) => {
+    setStateMenuProfile(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setStateMenuProfile(null);
+  };
+
+  // ----
+
+  async function handleLogout(){
+    await auth.signOut()
+
+    history.push('/')
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.bar}>
@@ -59,10 +81,36 @@ export function Menu() {
           </nav>
         </div>
 
-        <div>
-          <button className={styles.buttonMenus} onClick={() => {}}>
-            <ConfigIcon color="white" fontSize="large" />
-          </button>
+        <div className={styles.sideRight}>
+          {/* <button className={styles.buttonMenus} onClick={() => { auth.signOut().finally(()=> history.push('/')) }}>
+            <AccountIcon color="white" fontSize="large" />
+          </button> */}
+
+          <IconButton
+            size="large"
+            onClick={handleMenu}
+            color="white"
+          >
+            <AccountIcon />
+          </IconButton>
+          <MenuAppBar
+            id="menu-appbar"
+            anchorEl={stateMenuProfile}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={Boolean(stateMenuProfile)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={()=> history.push('perfil')}>Meu Perfil</MenuItem>
+            <MenuItem onClick={ handleLogout }>Sair</MenuItem>
+          </MenuAppBar>
         </div>
       </div>
       <Drawer
