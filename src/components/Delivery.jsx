@@ -7,9 +7,8 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 
 import styles from "../styles/components/delivery.module.css";
-import { TryOutlined } from "@mui/icons-material";
 
-export function Delivery({ name, status, timeLeft, course }) {
+export function Delivery({ name, status, timeLeft, totalTime, course }) {
   function statusDelivery(status) {
     switch (status) {
       case "delivered":
@@ -64,18 +63,28 @@ export function Delivery({ name, status, timeLeft, course }) {
           <h1>{name}</h1>
           {statusDelivery(status)}
         </header>
-        <main>
-          {(status === "onCarriage" || status === "waitingForTransport") ?? (
-            <div>
-              <p>Em curso {course}</p>
-            </div>
-          )}
-        </main>
-        <footer>
-          {true ?? (
-            <p>Estamos procurando o melhor entregador para levar seu pacote.</p>
-          )}
-        </footer>
+        {(status === "onCarriage" || status === "waitingForTransport") && (
+          <>
+            <main>
+              <div>
+                <p>Em curso {course}</p>
+                <p>{timeLeft} min restante</p>
+              </div>
+            </main>
+            <footer>
+              <h3>rodape</h3>
+            </footer>
+          </>
+        )}
+        {status === "lookingForDelivery" && (
+          <>
+            <footer>
+              <p>
+                Estamos procurando o melhor entregador para levar seu pacote.
+              </p>
+            </footer>
+          </>
+        )}
       </div>
     </>
   );

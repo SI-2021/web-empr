@@ -20,36 +20,42 @@ export default function Home() {
               name={"Teste 1"}
               status={"delivered"}
               timeLeft={50}
+              totalTime={120}
               course={"Três lagoas, MS"}
             />
             <Delivery
               name={"Teste 2"}
               status={"onCarriage"}
               timeLeft={50}
+              totalTime={120}
               course={"Três lagoas, MS"}
             />
             <Delivery
               name={"Teste 3"}
               status={"waitingForTransport"}
               timeLeft={50}
+              totalTime={120}
               course={"Três lagoas, MS"}
             />
             <Delivery
               name={"Teste 4"}
               status={"lookingForDelivery"}
               timeLeft={50}
+              totalTime={120}
               course={"Três lagoas, MS"}
             />
             <Delivery
               name={"Teste 5"}
               status={"calledOff"}
               timeLeft={50}
+              totalTime={120}
               course={"Três lagoas, MS"}
             />
             <Delivery
               name={"Teste 5"}
               status={"random"}
               timeLeft={50}
+              totalTime={120}
               course={"Três lagoas, MS"}
             />
           </div>
