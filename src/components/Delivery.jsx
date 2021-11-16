@@ -75,7 +75,7 @@ export function Delivery({ name, status, timeLeft, totalTime, course }) {
               </div>
             </main>
             <footer>
-              <Path value={50} />
+              <Path value={4} status={status}/>
             </footer>
           </>
         )}
