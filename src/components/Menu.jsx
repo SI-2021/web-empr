@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useHistory,Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
-import { auth } from '../services/auth';
+// import { auth } from '../services/auth';
 
 //Material UI
 import List from "@material-ui/core/List";
@@ -11,7 +11,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
-import { Menu as MenuAppBar, MenuItem } from '@material-ui/core';
+import { Menu as MenuAppBar, MenuItem } from "@material-ui/core";
 
 //Icones
 import {
@@ -60,10 +60,10 @@ export function Menu() {
 
   // ----
 
-  async function handleLogout(){
-    await auth.signOut()
+  async function handleLogout() {
+    await auth.signOut();
 
-    history.push('/')
+    history.push("/");
   }
 
   return (
@@ -77,7 +77,7 @@ export function Menu() {
             <MenuIcon color="white" fontSize="large" />
           </button>
           <nav>
-            <Link to={'home'}>Home</Link>
+            <Link to={"home"}>Home</Link>
           </nav>
         </div>
 
@@ -86,30 +86,28 @@ export function Menu() {
             <AccountIcon color="white" fontSize="large" />
           </button> */}
 
-          <IconButton
-            size="large"
-            onClick={handleMenu}
-            color="white"
-          >
+          <IconButton size="large" onClick={handleMenu} color="white">
             <AccountIcon />
           </IconButton>
           <MenuAppBar
             id="menu-appbar"
             anchorEl={stateMenuProfile}
             anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right"
             }}
             keepMounted
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
+              vertical: "top",
+              horizontal: "right"
             }}
             open={Boolean(stateMenuProfile)}
             onClose={handleClose}
           >
-            <MenuItem onClick={()=> history.push('perfil')}>Meu Perfil</MenuItem>
-            <MenuItem onClick={ handleLogout }>Sair</MenuItem>
+            <MenuItem onClick={() => history.push("perfil")}>
+              Meu Perfil
+            </MenuItem>
+            <MenuItem onClick={handleLogout}>Sair</MenuItem>
           </MenuAppBar>
         </div>
       </div>
@@ -145,7 +143,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => history.push('postagem')}>
+                <ListItemButton onClick={() => history.push("postagem")}>
                   <ListItemIcon>
                     <AddIcon color="white" />
                   </ListItemIcon>
@@ -159,7 +157,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => history.push('pagamentos')}>
+                <ListItemButton onClick={() => history.push("pagamentos")}>
                   <ListItemIcon>
                     <MoneyIcon color="white" />
                   </ListItemIcon>
@@ -171,7 +169,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => history.push('perfil')}>
+                <ListItemButton onClick={() => history.push("perfil")}>
                   <ListItemIcon>
                     <AccountIcon color="white" />
                   </ListItemIcon>

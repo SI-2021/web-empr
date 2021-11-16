@@ -1,5 +1,5 @@
 {
-  "name": "projwebemp",
+  "name": "packdelivery",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -52,5 +52,5 @@
     "@types/react-router-dom": "^5.3.2"
   },
   "keywords": [],
-  "description": "Projeto de WebII e Empreendedorismo"
+  "description": ""
 }
