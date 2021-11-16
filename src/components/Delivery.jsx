@@ -1,4 +1,6 @@
-// import { Box } from "@material-ui/core";
+import { Path } from '../components/Path';
+
+// Material UI
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HailIcon from "@mui/icons-material/Hail";
 import FindReplaceIcon from "@mui/icons-material/FindReplace";
@@ -6,6 +8,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 
+//Estilos
 import styles from "../styles/components/delivery.module.css";
 
 export function Delivery({ name, status, timeLeft, totalTime, course }) {
@@ -72,7 +75,7 @@ export function Delivery({ name, status, timeLeft, totalTime, course }) {
               </div>
             </main>
             <footer>
-              <h3>rodape</h3>
+              <Path value={50} />
             </footer>
           </>
         )}
