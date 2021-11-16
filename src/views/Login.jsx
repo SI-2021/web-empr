@@ -1,5 +1,5 @@
 import * as React from "react";
-// import LoginUI from "../components/LoginUI";
+import LoginUI from "../components/LoginUI";
 
 import styles from "../styles/login.module.css";
 
@@ -23,7 +23,7 @@ export default function Login() {
         <div className={styles.sideRight}>
           <p>Breve descrição...</p>
 
-          {/* <LoginUI /> */}
+          <LoginUI />
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 
-// import { auth } from '../services/auth';
+import { auth } from '../services/auth';
 
 //Material UI
 import List from "@material-ui/core/List";
@@ -82,9 +82,9 @@ export function Menu() {
         </div>
 
         <div className={styles.sideRight}>
-          {/* <button className={styles.buttonMenus} onClick={() => { auth.signOut().finally(()=> history.push('/')) }}>
+          <button className={styles.buttonMenus} onClick={() => { auth.signOut().finally(()=> history.push('/')) }}>
             <AccountIcon color="white" fontSize="large" />
-          </button> */}
+          </button>
 
           <IconButton size="large" onClick={handleMenu} color="white">
             <AccountIcon />
