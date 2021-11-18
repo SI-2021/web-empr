@@ -44,14 +44,8 @@ button {
 
 /* Menu - Lista */
 
-List,
-ListItem,
-ListItemButton {
-  background: none;
-}
-
 .drawer {
   opacity: 0.9;
-  color: none;
-  background: none !important;
+  
+  z-index: 999 !important;
 }

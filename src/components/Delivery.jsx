@@ -1,14 +1,16 @@
+import { useHistory } from 'react-router-dom';
+
 import { Path } from '../components/Path';
 import { Status } from '../components/Status';
+
 //Estilos
 import styles from "../styles/components/delivery.module.css";
 
-export function Delivery({ name, status, timeLeft, totalTime, course }) {
-  
-
+export function Delivery({ id, name, status, timeLeft, totalTime, course }) {
+  const history = useHistory();
   return (
     <>
-      <div className={styles.box}>
+      <div className={styles.box} onClick={() => history.push(`entregas/${id}`)}>
         <header>
           <h1>{name}</h1>
           <Status state={status} />
