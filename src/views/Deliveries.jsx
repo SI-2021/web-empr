@@ -1,11 +1,52 @@
 import { Status } from '../components/Status';
+import { Menu } from '../components/Menu';
 
 import styles from '../styles/deliveries.module.css';
 
 export default function Deliveries(params){
-  const name = 'Objeto X';
+  const object = {
+    name: 'Objeto X',
+    type: "Objeto Frágil",
+    height: 30,//em cm
+    width: 30, //em cm
+    length: 30, //em cm
+    weight: 400, //em gramas
+    boxShape: "Retangular",
+  }
   const delivery = {
-    status: "lookingForDelivery",
+    status: "onCarriage",
+    cost: 53.21, //em R$
+    transportType: "Pequeno",
+    deliveryman: "JoãoX", //ID do perfil do entregador
+    timeLeft: 50, //em minutos
+    totalTime: 120, //em minutos
+    sender: "My", //ID do remetente
+    recipient: { //ID do destinatário
+      name: "Fulano de Tal",
+      address: "Endereço: Rua Figueiredo, 1043 - Três Lagoas, MS",
+    },
+    trafficHistory: [
+      {
+        description: 'Objeto saiu de Bauru, SP',
+        date: '04/11/2021',
+        hour: '20:32'
+      },
+      {
+        description: 'Chegou ao Centro de Distribuição de Araçatuba,SP',
+        date: '04/11/2021',
+        hour: '23:06'
+      },
+      {
+        description: 'Objeto saiu do CD Araçatuba,SP',
+        date: '05/11/2021',
+        hour: '08:36'
+      },
+      {
+        description: 'Em trânsito para Três Lagoas, MS',
+        date: '05/11/2021',
+        hour: '09:01'
+      },
+    ]
   }
 
 
@@ -14,12 +55,18 @@ export default function Deliveries(params){
     <head>
       <title>Destalhes | Pack Delivery</title>
     </head>
+
+    <Menu />
     <div className={styles.app}>
       <div className={styles.container}>
         <header>
-          <h1>{name}</h1>
+          <h1>{object.name}</h1>
           <Status state={delivery.status}/>
         </header>
+
+        <main>
+          <strong>{delivery.type}</strong>
+        </main>
       </div>
     </div>
   </>)

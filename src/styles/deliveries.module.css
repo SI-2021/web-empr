@@ -1,7 +1,26 @@
+/* Corpo */
 .app {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Container do conteudo = Card */
 .container {
-  
+  display: flex;
+  flex-direction: column;
+
+  margin: 1.875rem 6.4375rem;
+
+  background: #ffffff;
+  box-shadow: 0px 9px 12px rgba(0, 0, 0, 0.14), 0px 3px 16px rgba(0, 0, 0, 0.12),
+    0px 5px 6px rgba(0, 0, 0, 0.2);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
