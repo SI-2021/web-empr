@@ -24,8 +24,15 @@ export default function Logar() {
                     .then(async response => {
                         const data = response.val();
 
+                        let nome_completo = authResult.user.displayName.split(" ");
+
+                        let nome = nome_completo[0];
+                        let sobrenome = nome.length > 1 ?
+                            nome_completo.splice(1, nome.length - 1).join(" ") : "";
+
                         let user = {
-                            nome_completo: authResult.user.displayName,
+                            nome,
+                            sobrenome,
                             email: authResult.user.email
                         };
 
@@ -36,7 +43,10 @@ export default function Logar() {
                             user = data;
                         }
 
-                        history.push("/home", { user });
+                        user.id = authResult.user.uid;
+                        localStorage.setItem("user", JSON.stringify(user));
+                        
+                        history.push("/home");
                     });
 
                 return false;
@@ -50,6 +60,6 @@ export default function Logar() {
     }
 
     return (
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
     );
 }
