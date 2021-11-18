@@ -1,6 +1,15 @@
+import { useEffect } from 'react';
 import styles from '../styles/components/path.module.css';
 
 export function Path(value, status){
+
+  useEffect(() => {
+    moveProgressBar()
+  }, [value])
+
+  function moveProgressBar(){
+    styles.traject.concat(`width: ${100}% !important;`)  
+  }
 
   function chooseIcon(){
     if(status === "waitingForTransport"){

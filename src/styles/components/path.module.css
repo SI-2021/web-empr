@@ -38,7 +38,7 @@
   flex-direction: row;
   align-items: center;
 
-  width: 4%;
+  width: 0%; /* Muda a posição do caminhão */
 
   position: absolute;
 }

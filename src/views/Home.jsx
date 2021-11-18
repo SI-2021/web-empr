@@ -14,15 +14,8 @@ export default function Home() {
         <Menu />
 
         <div className={styles.container}>
-          <div className={styles.contentDeliverys}>
+          <div className={styles.contents}>
             <h1 className={styles.title}>Entregas em andamento</h1>
-            <Delivery
-              name={"Teste 1"}
-              status={"delivered"}
-              timeLeft={50}
-              totalTime={120}
-              course={"Três lagoas, MS"}
-            />
             <Delivery
               name={"Teste 2"}
               status={"onCarriage"}
@@ -46,14 +39,24 @@ export default function Home() {
             />
             <Delivery
               name={"Teste 5"}
-              status={"calledOff"}
+              status={"random"}
+              timeLeft={50}
+              totalTime={120}
+              course={"Três lagoas, MS"}
+            />
+          </div>
+          <div className={styles.contents}>
+            <h1 className={styles.title}>Entregas concluidas</h1>
+            <Delivery
+              name={"Teste 1"}
+              status={"delivered"}
               timeLeft={50}
               totalTime={120}
               course={"Três lagoas, MS"}
             />
             <Delivery
               name={"Teste 5"}
-              status={"random"}
+              status={"calledOff"}
               timeLeft={50}
               totalTime={120}
               course={"Três lagoas, MS"}

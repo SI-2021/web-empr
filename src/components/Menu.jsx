@@ -82,10 +82,6 @@ export function Menu() {
         </div>
 
         <div className={styles.sideRight}>
-          <button className={styles.buttonMenus} onClick={() => { auth.signOut().finally(()=> history.push('/')) }}>
-            <AccountIcon color="white" fontSize="large" />
-          </button>
-
           <IconButton size="large" onClick={handleMenu} color="white">
             <AccountIcon />
           </IconButton>

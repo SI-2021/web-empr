@@ -6,6 +6,7 @@ import Home from "../views/Home";
 import Profile from "../views/Profile";
 import Post from "../views/Post";
 import Pay from "../views/Payments";
+import Deliveries from "../views/Deliveries";
 
 export default function Router() {
   return (
@@ -15,6 +16,7 @@ export default function Router() {
       <Route path="/perfil" component={Profile} />
       <Route path="/pagamentos" component={Pay} />
       <Route path="/postagem" component={Post} />
+      <Route path='/entregas/:id' component={Deliveries}/>
     </Switch>
   );
 }
