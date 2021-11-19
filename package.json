@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^12.8.3",
     "dotenv": "^10.0.0",
     "firebase": "^9.2.0",
+    "firebase-tools": "^9.23.0",
     "firebaseui": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
