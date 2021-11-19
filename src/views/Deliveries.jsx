@@ -1,5 +1,6 @@
 import { Status } from '../components/Status';
 import { Menu } from '../components/Menu';
+import { Path } from '../components/Path';
 
 import styles from '../styles/deliveries.module.css';
 
@@ -65,8 +66,37 @@ export default function Deliveries(params){
         </header>
 
         <main>
-          <strong>{delivery.type}</strong>
+          <h2>Detalhes</h2>
+          <div className={styles.contentObject}>
+            <div>
+              <p><strong>{object.type}</strong></p>
+              <p><strong>Altura:</strong> {object.height} cm</p>
+              <p><strong>Largura:</strong> {object.width} cm</p>
+              <p><strong>Comprimento:</strong> {object.length} cm</p>
+            </div>
+
+            <div>
+              <p><strong>Peso:</strong> {object.weight}g</p>
+              <p><strong>Formato da caixa:</strong> {object.boxShape}</p>
+              <p><strong>Tipo de transporte:</strong> {delivery.transportType}</p>
+            </div>
+
+            <div>
+              <strong>Destinatário:</strong>
+              <p>{delivery.recipient.name}</p>
+              <p>{delivery.recipient.address}</p>
+            </div>
+          </div>
         </main>
+
+        <footer>
+          <h2>Trânsito do objeto</h2>
+          <ul>
+
+          </ul>
+          <Path value={Math.floor((delivery.timeLeft/delivery.totalTime)*100)} status={delivery.status} />
+          <span>Previsão de entrega em {delivery.timeLeft} min.</span>
+        </footer>
       </div>
     </div>
   </>)

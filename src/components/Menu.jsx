@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useRouteMatch } from "react-router-dom";
 
 import { auth } from '../services/auth';
 
@@ -26,6 +26,7 @@ import {
 import styles from "../styles/components/menu.module.css";
 
 export function Menu() {
+  const match = useRouteMatch();
   const history = useHistory();
 
   // Menu suspenso
@@ -68,6 +69,7 @@ export function Menu() {
 
   return (
     <div className={styles.container}>
+      {console.log(match)}
       <div className={styles.bar}>
         <div className={styles.sideLeft}>
           <button
@@ -77,7 +79,7 @@ export function Menu() {
             <MenuIcon color="white" fontSize="large" />
           </button>
           <nav>
-            <Link to={"home"}>Home</Link>
+            <Link to={"/home"}>Home</Link>
           </nav>
         </div>
 
@@ -100,7 +102,7 @@ export function Menu() {
             open={Boolean(stateMenuProfile)}
             onClose={handleClose}
           >
-            <MenuItem onClick={() => history.push("perfil")}>
+            <MenuItem onClick={() => history.push("/perfil")}>
               Meu Perfil
             </MenuItem>
             <MenuItem onClick={handleLogout}>Sair</MenuItem>
@@ -139,7 +141,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => history.push("postagem")}>
+                <ListItemButton onClick={() => history.push("/postagem")}>
                   <ListItemIcon>
                     <AddIcon color="white" />
                   </ListItemIcon>
@@ -153,7 +155,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => history.push("pagamentos")}>
+                <ListItemButton onClick={() => history.push('/pagamentos')}>
                   <ListItemIcon>
                     <MoneyIcon color="white" />
                   </ListItemIcon>
@@ -165,7 +167,7 @@ export function Menu() {
               </ListItem>
 
               <ListItem disablePadding>
-                <ListItemButton onClick={() => history.push("perfil")}>
+                <ListItemButton onClick={() => history.push('/perfil')}>
                   <ListItemIcon>
                     <AccountIcon color="white" />
                   </ListItemIcon>
