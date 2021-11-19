@@ -10,6 +10,7 @@ import { ref, set, child, get } from "firebase/database";
 import "../styles/components/loginButton.css";
 
 export default function Logar() {
+
   const history = useHistory();
 
   const uiConfig = {
@@ -48,3 +49,4 @@ export default function Logar() {
 
   return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />;
 }
+

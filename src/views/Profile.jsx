@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Menu } from "../components/Menu";
+import { normalizarUser, saveUser } from "../helpers/User";
+
+// Database
+import db from "../services/database";
+import { get, set, ref, child } from "firebase/database";
 
 //Componentes Material UI
 import { TextField, Button } from "@material-ui/core";
@@ -10,29 +15,78 @@ import styles from "../styles/profile.module.css";
 
 export default function Profile() {
   const history = useHistory();
-  
-  // Dados do usuário
-  const [name, setName] = useState();
-  const [surname, setSurname] = useState();
-  const [cpf, setCpf] = useState();
-  const [rg, setRg] = useState();
+
+  // Objeto user para fácil manipulação
+  const [user, setUser] = useState(normalizarUser({}));
+
+  /* Dados do usuário
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [rg, setRg] = useState("");
   //Endereço
-  const [address, setAddress] = useState();
-  const [city, setCity] = useState();
-  const [state, setState] = useState();
-  const [country, setCountry] = useState();
-  const [complement, setComplement] = useState();
-  const [cep, setCep] = useState();
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [complement, setComplement] = useState("");
+  const [cep, setCep] = useState("");
   //Contato
-  const [email, setEmail] = useState();
-  const [phoneNumber, setPhone] = useState();
-  const [phoneNumber2, setPhone2] = useState();
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhone] = useState("");
+  const [phoneNumber2, setPhone2] = useState("");*/
 
   //Dados de entregador
   const [isDeliveryman, setIsDeliveryman] = useState(false);
-  const [cnh, setCnh] = useState();
-  const [vehiclePlate, setVehiclePlate] = useState();
-  const [renavan, setRenavan] = useState();
+  /*const [cnh, setCnh] = useState("");
+  const [vehiclePlate, setVehiclePlate] = useState("");
+  const [renavan, setRenavan] = useState("");*/
+
+  useEffect(() => {
+    const userJson = JSON.parse(localStorage.getItem("user"));
+
+    get(child(ref(db), `/Pessoa/${userJson.id}`))
+      .then(response => {
+        let data = response.val();
+
+        if (data) {
+          data.id = userJson.id;
+          data = normalizarUser(data);
+
+          if (Object.keys(data.entregador).length !== 0) {
+            setIsDeliveryman(true);
+          }
+
+          setUser(data);
+        }
+      });
+  }, []);
+
+  function updateField(e) {
+    const userObj = { ...user }
+
+    let campo = e.target.name.split(".");
+
+    if (campo.length === 2 && campo[0] === "entregador") {
+      userObj.entregador[campo[1]] = e.target.value;
+    } else {
+      userObj[e.target.name] = e.target.value;
+    }
+
+    saveUser(set, ref, db, userObj);
+
+    setUser(userObj);
+  }
+
+  function disableDeliveryman() {
+    const userObj = { ...user }
+    userObj.entregador = {}
+
+    saveUser(set, ref, db, userObj);
+
+    setUser(userObj);
+    setIsDeliveryman(false);
+  }
 
   return (
     <>
@@ -53,8 +107,9 @@ export default function Profile() {
                   label="Nome"
                   variant="outlined"
                   size="small"
-                  value={name}
-                  onChange={(e) => setName(e.currentTarget.value)}
+                  name="nome"
+                  value={user.nome}
+                  onChange={updateField}
                   fullWidth
                 />
                 <TextField
@@ -62,8 +117,9 @@ export default function Profile() {
                   label="Sobrenome"
                   variant="outlined"
                   size="small"
-                  value={surname}
-                  onChange={(e) => setSurname(e.currentTarget.value)}
+                  name="sobrenome"
+                  value={user.sobrenome}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -73,8 +129,9 @@ export default function Profile() {
                   label="CPF"
                   variant="outlined"
                   size="small"
-                  value={cpf}
-                  onChange={(e) => setCpf(e.currentTarget.value)}
+                  name="cpf"
+                  value={user.cpf}
+                  onChange={updateField}
                   fullWidth
                 />
                 <TextField
@@ -82,8 +139,9 @@ export default function Profile() {
                   label="RG"
                   variant="outlined"
                   size="small"
-                  value={rg}
-                  onChange={(e) => setRg(e.currentTarget.value)}
+                  name="rg"
+                  value={user.rg}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -98,8 +156,9 @@ export default function Profile() {
                   label="Endereço"
                   variant="outlined"
                   size="small"
-                  value={address}
-                  onChange={(e) => setAddress(e.currentTarget.value)}
+                  name="endereco"
+                  value={user.endereco}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -109,24 +168,27 @@ export default function Profile() {
                   label="Cidade"
                   variant="outlined"
                   size="small"
-                  value={city}
-                  onChange={(e) => setCity(e.currentTarget.value)}
+                  name="cidade"
+                  value={user.cidade}
+                  onChange={updateField}
                 />
                 <TextField
                   id="outlined-basic"
                   label="Estado"
                   variant="outlined"
                   size="small"
-                  value={state}
-                  onChange={(e) => setState(e.currentTarget.value)}
+                  name="estado"
+                  value={user.estado}
+                  onChange={updateField}
                 />
                 <TextField
                   id="outlined-basic"
                   label="País"
                   variant="outlined"
                   size="small"
-                  value={country}
-                  onChange={(e) => setCountry(e.currentTarget.value)}
+                  name="pais"
+                  value={user.pais}
+                  onChange={updateField}
                 />
               </div>
               <div className={styles.line}>
@@ -135,8 +197,9 @@ export default function Profile() {
                   label="Complemento"
                   variant="outlined"
                   size="small"
-                  value={complement}
-                  onChange={(e) => setComplement(e.currentTarget.value)}
+                  name="complemento"
+                  value={user.complemento}
+                  onChange={updateField}
                   fullWidth
                 />
                 <TextField
@@ -144,8 +207,9 @@ export default function Profile() {
                   label="CEP"
                   variant="outlined"
                   size="small"
-                  value={cep}
-                  onChange={(e) => setCep(e.currentTarget.value)}
+                  name="cep"
+                  value={user.cep}
+                  onChange={updateField}
                 />
               </div>
             </div>
@@ -159,8 +223,9 @@ export default function Profile() {
                   label="E-mail"
                   variant="outlined"
                   size="small"
-                  value={email}
-                  onChange={(e) => setEmail(e.currentTarget.value)}
+                  name="email"
+                  value={user.email}
+                  onChange={updateField}
                   type="email"
                   fullWidth
                 />
@@ -172,8 +237,9 @@ export default function Profile() {
                   label="Celular"
                   variant="outlined"
                   size="small"
-                  value={phoneNumber}
-                  onChange={(e) => setPhone(e.currentTarget.value)}
+                  name="celular"
+                  value={user.celular}
+                  onChange={updateField}
                   fullWidth
                 />
                 <TextField
@@ -181,8 +247,9 @@ export default function Profile() {
                   label="Telefone"
                   variant="outlined"
                   size="small"
-                  value={phoneNumber2}
-                  onChange={(e) => setPhone2(e.currentTarget.value)}
+                  name="telefone"
+                  value={user.telefone}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -203,8 +270,9 @@ export default function Profile() {
                       label="CNH"
                       variant="outlined"
                       size="small"
-                      value={cnh}
-                      onChange={(e) => setCnh(e.currentTarget.value)}
+                      name="entregador.cnh"
+                      value={user.entregador?.cnh}
+                      onChange={updateField}
                     />
                   </div>
                 </div>
@@ -218,8 +286,9 @@ export default function Profile() {
                       label="Placa"
                       variant="outlined"
                       size="small"
-                      value={vehiclePlate}
-                      onChange={(e) => setVehiclePlate(e.currentTarget.value)}
+                      name="entregador.placa_veiculo"
+                      value={user.entregador?.placa_veiculo}
+                      onChange={updateField}
                       fullWidth
                     />
                     <TextField
@@ -227,8 +296,9 @@ export default function Profile() {
                       label="RENAVAN"
                       variant="outlined"
                       size="small"
-                      value={renavan}
-                      onChange={(e) => setRenavan(e.currentTarget.value)}
+                      name="entregador.renavan"
+                      value={user.entregador?.renavan}
+                      onChange={updateField}
                       fullWidth
                     />
                   </div>
@@ -238,7 +308,7 @@ export default function Profile() {
                   <Button
                     variant="text"
                     color="error"
-                    onClick={() => setIsDeliveryman(false)}
+                    onClick={disableDeliveryman}
                   >
                     Não quero entregar
                   </Button>
