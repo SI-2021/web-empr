@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  position: relative;
+
+  width: 100%;
+  height: 2rem;
+  max-height: 3rem;
+
+}
+
+/* Quadradinho */
+.square {
+  background: var(--check);
+  width: 21px;
+  height: 21px;
+  
+  border-radius: 2px;
+}
+
+/* Caminhos */
+.backPath{ /* Background */
+  background: #c3c3c3;
+  width: 100%;
+  height: 5px;
+}
+
+.pathInProgress { /* Em transporte */
+  background: var(--check);
+  width: 100%;
+  height: 5px;
+
+}
+
+.traject {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 0%; /* Muda a posição do caminhão */
+
+  position: absolute;
+}
+
+
+/* Bandeira final */
+.flag {
+  color: #c3c3c3;
+  width: 21px;
+}
+
+/* Caminhão */
+.loadingTruck {
+  background: none;
+  width: 37px;
+  height: 37px;
+}
+
+.truck{
+  background: none;
+  width: 37px;
+  height: 37px;
+}
