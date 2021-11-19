@@ -89,11 +89,17 @@ export default function Deliveries(params){
           </div>
         </main>
 
-        <footer>
+        <article>
           <h2>Trânsito do objeto</h2>
-          <ul>
 
+          <ul>
+            {delivery.trafficHistory.map( (item, index) => {
+              return(<li key={index}>{item.description} - {item.hour} - {item.date}</li>)
+            })}
           </ul>
+        </article>
+
+        <footer>
           <Path value={Math.floor((delivery.timeLeft/delivery.totalTime)*100)} status={delivery.status} />
           <span>Previsão de entrega em {delivery.timeLeft} min.</span>
         </footer>

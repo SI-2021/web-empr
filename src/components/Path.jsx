@@ -8,7 +8,7 @@ export function Path(value, status){
   }, [value])
 
   function moveProgressBar(){
-    styles.traject.concat(`width: ${100}% !important;`)  
+    styles.route = `width: ${value}% !important`
   }
 
   function chooseIcon(){
@@ -26,7 +26,7 @@ export function Path(value, status){
       {chooseIcon()}
       <div className={styles.backPath}></div>
       { true && (
-        <div className={styles.traject}>
+        <div className={`${styles.traject} ${styles.route}`}>
           <div className={styles.pathInProgress}></div>
           <img className={styles.truck} src="truck.svg" alt="Caminhão" />
         </div>
