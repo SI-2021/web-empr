@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
+
 import { useHistory } from "react-router";
 import { Menu } from "../components/Menu";
 
 //Componentes Material UI
-import { TextField, ToggleButtonGroup, ToggleButton } from "@material-ui/core";
+import { TextField, ToggleButtonGroup, ToggleButton, Button } from "@material-ui/core";
 
 //Estilos
 import styles from "../styles/post.module.css";
@@ -46,31 +49,36 @@ export default function Post() {
   }
 
   //Formato da caixa
+  const btnShapeStyles = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+    p: '2rem .5rem'
+  }
+
   const children = [
-    <ToggleButton value="rectangular" key="rectangular">
+    <ToggleButton value="rectangular" key="rectangular" sx={btnShapeStyles}>
       <img src="rectangle.svg" alt="Retângulo" />
       <span>Retângulo</span>
     </ToggleButton>,
 
-    <ToggleButton value="cylinder" key="cylinder">
+    <ToggleButton value="cylinder" key="cylinder" sx={btnShapeStyles}>
       <img src="circle.svg" alt="Cilindro" />
       <span>Cilindro</span>
     </ToggleButton>,
 
-    <ToggleButton value="triangular" key="triangular">
+    <ToggleButton value="trigonal" key="trigonal" sx={btnShapeStyles}>
       <img src="triangle.svg" alt="Triângulo" />
       <span>Triângulo</span>
     </ToggleButton>,
   ];
 
-  const control = {
-    value: object.boxShape,
-    onChange: handleChange,
-    exclusive: true,
-  };
+  const [shapeBox, setAShapeBox] = useState('web');
 
-  const handleChange = (event, newShape) => {
-    object.boxShape = newShape
+  const handleChangeShapeBox = (event, newShapeBox) => {
+    setAShapeBox(newShapeBox);
+    console.log(event.currentTarget.value)
   };
 
   return (
@@ -263,7 +271,18 @@ export default function Post() {
               <span>Formato da caixa</span>
               
               <div className={styles.line}>
-              <ToggleButtonGroup size="large" {...control}>
+              <ToggleButtonGroup 
+                size="large"
+                color="primary"
+                value={shapeBox}
+                exclusive
+                onChange={handleChangeShapeBox}
+                fullWidth
+                sx={{
+                  display: "flex",
+                  flexWrap: true,
+                }}
+              >
                 {children}
               </ToggleButtonGroup>
               </div>
@@ -322,6 +341,23 @@ export default function Post() {
                 />
               </div>
             </div>
+
+            <footer className={styles.footer}>
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  history.length > 1 ? history.goBack() : history.push("home");
+                }}
+              >
+                Voltar
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => {}}
+              >
+                Salvar
+              </Button>
+            </footer>
           </div>
         </div>
       </div>

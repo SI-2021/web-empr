@@ -30,19 +30,10 @@
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
   padding: 2rem 2rem;
   gap: 1.75rem;
-}
-
-span {
-  font-weight: 500;
-  font-size: 1.25rem;
-}
-
-p {
-  font-weight: lighter;
-  font-size: 1rem;
-  color: #676767;
 }
 
 /* Caixas */
@@ -50,6 +41,17 @@ p {
   display: flex;
   flex-direction: column;
   gap: .7rem;
+}
+
+.content span {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.content p {
+  font-weight: lighter;
+  font-size: 1rem;
+  color: #676767;
 }
 
 /* Linhas dentro das caixa */
@@ -64,13 +66,14 @@ p {
   width: 365px;
 }
 
-.btnBack {
-  position: absolute;
-  bottom: -1rem;
-  align-self: flex-end;
-}
+/* Botões rodapé */
+.footer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 
-.btnNope {
   position: absolute;
-  bottom: -1rem;
+
+  bottom: 2rem;
+  align-self: flex-end;
 }
