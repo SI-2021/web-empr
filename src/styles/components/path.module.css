@@ -63,3 +63,7 @@
   width: 37px;
   height: 37px;
 }
+
+.router {
+  display: flex;
+}
