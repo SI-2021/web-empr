@@ -1,4 +1,7 @@
 {
   "files.autoSave": "onWindowChange",
   "editor.fontSize": 13,
+  "cSpell.words": [
+    "RENAVAN"
+  ],
 }

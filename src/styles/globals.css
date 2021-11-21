@@ -19,8 +19,15 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 400;
+  color: #04060d;
 }
 
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
   background: var(--background) !important;
+}
+
+
+/* Components tela de postagem */
+.Mui-selected {
+  border: 1px solid var(--color2) !important;
 }

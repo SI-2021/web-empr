@@ -19,28 +19,8 @@ export default function Profile() {
   // Objeto user para fácil manipulação
   const [user, setUser] = useState(normalizarUser({}));
 
-  /* Dados do usuário
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [rg, setRg] = useState("");
-  //Endereço
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [complement, setComplement] = useState("");
-  const [cep, setCep] = useState("");
-  //Contato
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhone] = useState("");
-  const [phoneNumber2, setPhone2] = useState("");*/
-
   //Dados de entregador
   const [isDeliveryman, setIsDeliveryman] = useState(false);
-  /*const [cnh, setCnh] = useState("");
-  const [vehiclePlate, setVehiclePlate] = useState("");
-  const [renavan, setRenavan] = useState("");*/
 
   useEffect(() => {
     const userJson = JSON.parse(localStorage.getItem("user"));

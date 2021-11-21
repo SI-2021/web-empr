@@ -5,8 +5,9 @@ export function Path(value, status){
 
   useEffect(() => {
     moveProgressBar()
-  }, [value])
+  }, [moveProgressBar])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function moveProgressBar(){
     styles.route = `width: ${value}% !important`
   }
