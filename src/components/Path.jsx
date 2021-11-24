@@ -39,7 +39,7 @@ export function Path(value, status) {
       {chooseIcon()}
       <div className={styles.backPath}></div>
       {true && (
-        <div className={`${styles.traject}`} styles={'width':valueBar }>
+        <div className={styles.traject}>
           <div className={styles.pathInProgress}></div>
           <img className={styles.truck} src={truckImg} alt="Caminhão" />
         </div>
