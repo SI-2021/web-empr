@@ -1,38 +1,50 @@
-import { useEffect } from 'react';
-import styles from '../styles/components/path.module.css';
+import { useEffect, useState } from "react";
+import styles from "../styles/components/path.module.css";
 
-export function Path(value, status){
+//Imagens
+import truckImg from "../../public/truck.svg";
+import loadingTruckImg from "../../public/loading-truck.svg";
+import flagImg from "../../public/flag.svg";
+
+export function Path(value, status) {
+  const [valueBar, setValueBar] = useState();
 
   useEffect(() => {
-    moveProgressBar()
-  }, [moveProgressBar])
+    moveProgressBar();
+  }, [moveProgressBar]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  function moveProgressBar(){
-    styles.route = `width: ${value}% !important`
+  function moveProgressBar() {
+    setValueBar(`width: ${value}% !important;`);
   }
 
-  function chooseIcon(){
-    if(status === "waitingForTransport"){
+  function chooseIcon() {
+    if (status === "waitingForTransport") {
       //Aguardando transporte
-      return <img className={styles.loadingTruck} src="loading-truck.svg" alt="CarregandoCaminhão" />
-    }else if(value > 5){
+      return (
+        <img
+          className={styles.loadingTruck}
+          src={loadingTruckImg}
+          alt="CarregandoCaminhão"
+        />
+      );
+    } else if (value > 5) {
       //Em transporte
-      return <div className={styles.square}></div>
+      return <div className={styles.square}></div>;
     }
   }
 
-  return(
+  return (
     <div className={styles.container}>
       {chooseIcon()}
       <div className={styles.backPath}></div>
-      { true && (
-        <div className={`${styles.traject} ${styles.route}`}>
+      {true && (
+        <div className={`${styles.traject}`} styles={'width':valueBar }>
           <div className={styles.pathInProgress}></div>
-          <img className={styles.truck} src="truck.svg" alt="Caminhão" />
+          <img className={styles.truck} src={truckImg} alt="Caminhão" />
         </div>
       )}
-      <img  className={styles.flag} src="flag.svg" alt="Bandeira" />
+      <img className={styles.flag} src={flagImg} alt="Bandeira" />
     </div>
-  )
+  );
 }
