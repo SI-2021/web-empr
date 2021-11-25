@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, Link, useRouteMatch } from "react-router-dom";
 
-import { auth } from '../services/auth';
+import auth from '../services/auth';
 
 //Material UI
 import List from "@material-ui/core/List";
@@ -69,7 +69,6 @@ export function Menu() {
 
   return (
     <div className={styles.container}>
-      {console.log(match)}
       <div className={styles.bar}>
         <div className={styles.sideLeft}>
           <button

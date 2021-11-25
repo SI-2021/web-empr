@@ -1,7 +1,7 @@
 import { useHistory } from "react-router";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
-import { auth } from "../services/auth";
+import auth from "../services/auth";
 import { EmailAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 import db from "../services/database";

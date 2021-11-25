@@ -1,8 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useHistory } from "react-router";
 import { Menu } from "../components/Menu";
+
+import db from "../services/database";
+import { get, push, ref, child } from "firebase/database";
+
+import { normalizarUser } from "../helpers/User";
+import { validaEntrega } from '../helpers/Entrega';
 
 //Componentes Material UI
 import { TextField, ToggleButtonGroup, ToggleButton, Button } from "@material-ui/core";
@@ -13,8 +19,10 @@ import styles from "../styles/post.module.css";
 export default function Post() {
   const history = useHistory();
 
+  const [user, setUser] = useState(normalizarUser({}));
+
   //Informações do objeto
-  let object = {
+  const [object, setObject] = useState({
     name: "",
     description: "",
     boxShape: "",
@@ -24,10 +32,10 @@ export default function Post() {
       length: 0,
     },
     weight: 0,
-  }
+  });
 
   //dados remetente
-  let recipient = {
+  const [recipient, setRecipient] = useState({
     address: "",
     state: "",
     city: "",
@@ -35,10 +43,10 @@ export default function Post() {
     country: "",
     complement: "",
     responsible: "", //Nome do responsável no local de envio
-  }
+  });
 
   //dados destinatário
-  let sender = {
+  const [sender, setSender] = useState({
     address: "",
     state: "",
     city: "",
@@ -46,7 +54,7 @@ export default function Post() {
     country: "",
     complement: "",
     senderName: "", //Nome do remetente
-  }
+  });
 
   //Formato da caixa
   const btnShapeStyles = {
@@ -76,10 +84,92 @@ export default function Post() {
 
   const [shapeBox, setAShapeBox] = useState('web');
 
+  useEffect(() => {
+    const userJson = JSON.parse(localStorage.getItem("user"));
+
+    get(child(ref(db), `/Pessoa/${userJson.id}`))
+      .then(response => {
+        let data = response.val();
+
+        if (data) {
+          data.id = userJson.id;
+
+          data = normalizarUser(data);
+
+          // Preenche com os dados do cadastro para comodidade
+          sender.address = data.endereco;
+          sender.city = data.cidade;
+          sender.state = data.estado;
+          sender.country = data.pais
+          sender.complement = data.complemento;
+          sender.cep = data.cep;
+          sender.senderName = data.nome;
+
+          setUser(data);
+        }
+      });
+  }, []);
+
   const handleChangeShapeBox = (event, newShapeBox) => {
     setAShapeBox(newShapeBox);
-    console.log(event.currentTarget.value)
+
+    let data = { ...object }
+    data.boxShape = newShapeBox;
+
+    setObject(data);
   };
+
+  const updateField = (e) => {
+    const name = e.target.name;
+    let data = null;
+
+    switch (name.substring(0, 2)) {
+      case "s-":
+        data = { ...sender }
+        data[name.substring(2)] = e.target.value;
+        setSender(data);
+        break;
+      case "r-":
+        data = { ...recipient }
+        data[name.substring(2)] = e.target.value;
+        setRecipient(data);
+        break;
+      default:
+        data = { ...object }
+
+        if (name.substring(0, 2) === "d-") {
+          data.dimensions[name.substring(2)] = e.target.value;
+        } else {
+          data[name] = e.target.value;
+        }
+
+        setObject(data);
+        break;
+    }
+  }
+
+  const cadastrarPostagem = async () => {
+    const entrega = {
+      object,
+      sender,
+      recipient
+    }
+
+    const entregaValida = validaEntrega(entrega)
+    console.log(`Entrega: ${entregaValida}`);
+
+    // Galera do front deixa isso bonito xD
+    if (!entregaValida) alert("Preencha todos os campos!");
+
+    entrega.remetente_id = user.id;
+    push(child(ref(db), `/Entrega/`), entrega)
+      .then(response => {
+
+        // Deixar bonito depois
+        alert("Postagem salva com sucesso!");
+        history.replace("home");
+      });
+  }
 
   return (
     <>
@@ -101,7 +191,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="name"
-                  onChange={() => {}}
+                  value={object.name}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -112,7 +203,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="description"
-                  onChange={() => {}}
+                  value={object.description}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -127,8 +219,9 @@ export default function Post() {
                   label="Endereço"
                   variant="outlined"
                   size="small"
-                  name="s-adreess"
-                  onChange={() => {}}
+                  name="s-address"
+                  value={sender.address}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -139,7 +232,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="s-city"
-                  onChange={() => {}}
+                  value={sender.city}
+                  onChange={updateField}
                 />
                 <TextField
                   id="outlined-basic"
@@ -147,7 +241,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="s-state"
-                  onChange={() => {}}
+                  value={sender.state}
+                  onChange={updateField}
                 />
                 <TextField
                   id="outlined-basic"
@@ -155,7 +250,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="s-country"
-                  onChange={() => {}}
+                  value={sender.country}
+                  onChange={updateField}
                 />
               </div>
               <div className={styles.line}>
@@ -165,7 +261,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="s-complement"
-                  onChange={() => {}}
+                  value={sender.complement}
+                  onChange={updateField}
                   fullWidth
                 />
                 <TextField
@@ -174,7 +271,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="s-cep"
-                  onChange={() => {}}
+                  value={sender.cep}
+                  onChange={updateField}
                 />
               </div>
               <div className={styles.line}>
@@ -183,8 +281,9 @@ export default function Post() {
                   label="Nome Responsável"
                   variant="outlined"
                   size="small"
-                  name="s-name"
-                  onChange={() => {}}
+                  name="s-senderName"
+                  value={sender.senderName}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -199,8 +298,9 @@ export default function Post() {
                   label="Endereço"
                   variant="outlined"
                   size="small"
-                  name="r-adreess"
-                  onChange={() => {}}
+                  name="r-address"
+                  value={recipient.address}
+                  onChange={updateField}
                   fullWidth
                 />
               </div>
@@ -211,7 +311,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="r-city"
-                  onChange={() => {}}
+                  value={recipient.city}
+                  onChange={updateField}
                 />
                 <TextField
                   id="outlined-basic"
@@ -219,7 +320,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="r-state"
-                  onChange={() => {}}
+                  value={recipient.state}
+                  onChange={updateField}
                 />
                 <TextField
                   id="outlined-basic"
@@ -227,7 +329,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="r-country"
-                  onChange={() => {}}
+                  value={recipient.country}
+                  onChange={updateField}
                 />
               </div>
               <div className={styles.line}>
@@ -237,7 +340,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="r-complement"
-                  onChange={() => {}}
+                  value={recipient.complement}
+                  onChange={updateField}
                   fullWidth
                 />
                 <TextField
@@ -246,7 +350,8 @@ export default function Post() {
                   variant="outlined"
                   size="small"
                   name="r-cep"
-                  onChange={() => {}}
+                  value={recipient.cep}
+                  onChange={updateField}
                 />
               </div>
               <div className={styles.line}>
@@ -255,8 +360,9 @@ export default function Post() {
                   label="Nome Responsável"
                   variant="outlined"
                   size="small"
-                  name="r-name"
-                  onChange={() => {}}
+                  name="r-responsible"
+                  value={recipient.responsible}
+                  onChange={updateField}
                   fullWidth
                 />
 
@@ -269,22 +375,22 @@ export default function Post() {
           <div className={styles.sides}>
             <div className={styles.content}>
               <span>Formato da caixa</span>
-              
+
               <div className={styles.line}>
-              <ToggleButtonGroup 
-                size="large"
-                color="primary"
-                value={shapeBox}
-                exclusive
-                onChange={handleChangeShapeBox}
-                fullWidth
-                sx={{
-                  display: "flex",
-                  flexWrap: true,
-                }}
-              >
-                {children}
-              </ToggleButtonGroup>
+                <ToggleButtonGroup
+                  size="large"
+                  color="primary"
+                  value={shapeBox}
+                  exclusive
+                  onChange={handleChangeShapeBox}
+                  fullWidth
+                  sx={{
+                    display: "flex",
+                    flexWrap: true,
+                  }}
+                >
+                  {children}
+                </ToggleButtonGroup>
               </div>
             </div>
 
@@ -295,33 +401,39 @@ export default function Post() {
               <div className={styles.line}>
                 <TextField
                   id="outlined-basic"
+                  type="number"
                   label="Altura"
                   variant="outlined"
                   size="small"
-                  name="height"
-                  onChange={() => {}}
+                  name="d-height"
+                  value={object.dimensions.height}
+                  onChange={updateField}
                 />
               </div>
 
               <div className={styles.line}>
                 <TextField
                   id="outlined-basic"
+                  type="number"
                   label="Largura"
                   variant="outlined"
                   size="small"
-                  name="width"
-                  onChange={() => {}}
+                  name="d-width"
+                  value={object.dimensions.width}
+                  onChange={updateField}
                 />
               </div>
 
               <div className={styles.line}>
                 <TextField
                   id="outlined-basic"
+                  type="number"
                   label="Comprimento"
                   variant="outlined"
                   size="small"
-                  name="length"
-                  onChange={() => {}}
+                  name="d-length"
+                  value={object.dimensions.length}
+                  onChange={updateField}
                 />
               </div>
             </div>
@@ -333,11 +445,13 @@ export default function Post() {
               <div className={styles.line}>
                 <TextField
                   id="outlined-basic"
+                  type="number"
                   label="Peso"
                   variant="outlined"
                   size="small"
                   name="weight"
-                  onChange={() => {}}
+                  value={object.weight}
+                  onChange={updateField}
                 />
               </div>
             </div>
@@ -353,7 +467,7 @@ export default function Post() {
               </Button>
               <Button
                 variant="contained"
-                onClick={() => {}}
+                onClick={cadastrarPostagem}
               >
                 Salvar
               </Button>

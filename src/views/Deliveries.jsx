@@ -52,7 +52,6 @@ export default function Deliveries(params){
 
 
   return(<>
-    {console.log(params)}
     <head>
       <title>Destalhes | Pack Delivery</title>
     </head>

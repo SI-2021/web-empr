@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import styles from "../styles/components/path.module.css";
 
 //Imagens
-import truckImg from "../../public/truck.svg";
-import loadingTruckImg from "../../public/loading-truck.svg";
-import flagImg from "../../public/flag.svg";
+import truckImg from "../res/truck.svg";
+import loadingTruckImg from "../res/loading-truck.svg";
+import flagImg from "../res/flag.svg";
 
 export function Path(value, status) {
   const [valueBar, setValueBar] = useState();

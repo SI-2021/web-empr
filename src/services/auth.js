@@ -3,5 +3,6 @@ import {
     initializeAuth
 } from "firebase/auth";
 
-// export const auth = initializeAuth(app);
+const auth = initializeAuth(app);
 
+export default auth;

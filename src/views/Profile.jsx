@@ -251,7 +251,7 @@ export default function Profile() {
                       variant="outlined"
                       size="small"
                       name="entregador.cnh"
-                      value={user.entregador?.cnh}
+                      value={user.entregador.cnh}
                       onChange={updateField}
                     />
                   </div>
@@ -267,7 +267,7 @@ export default function Profile() {
                       variant="outlined"
                       size="small"
                       name="entregador.placa_veiculo"
-                      value={user.entregador?.placa_veiculo}
+                      value={user.entregador.placa_veiculo}
                       onChange={updateField}
                       fullWidth
                     />
@@ -277,7 +277,7 @@ export default function Profile() {
                       variant="outlined"
                       size="small"
                       name="entregador.renavan"
-                      value={user.entregador?.renavan}
+                      value={user.entregador.renavan}
                       onChange={updateField}
                       fullWidth
                     />
