@@ -15,7 +15,7 @@ export function Path(value, status) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function moveProgressBar() {
-    setValueBar(`width: ${value}% !important;`);
+    setValueBar(`width: ${value}% !important;${valueBar}`);
   }
 
   function chooseIcon() {

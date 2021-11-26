@@ -108,7 +108,7 @@ export default function Post() {
           setUser(data);
         }
       });
-  }, []);
+  }, [sender]);
 
   const handleChangeShapeBox = (event, newShapeBox) => {
     setAShapeBox(newShapeBox);

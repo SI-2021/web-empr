@@ -26,7 +26,6 @@ import {
 import styles from "../styles/components/menu.module.css";
 
 export function Menu() {
-  const match = useRouteMatch();
   const history = useHistory();
 
   // Menu suspenso
