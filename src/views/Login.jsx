@@ -18,7 +18,7 @@ export default function Login() {
         <div className={styles.sideLeft}>
           <div className={styles.contentLogo}>
             <img src='pack.svg' width="200px" alt="Pacote" />
-            <h1>NOME</h1>
+            <h1>PACK</h1>
           </div>
 
           <img className={styles.bars} src="bars.svg" alt="/" />
