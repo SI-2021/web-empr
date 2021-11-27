@@ -1,8 +1,14 @@
 import * as React from "react";
+
+//Componentes
 import LoginUI from "../components/LoginUI";
 
+//Imagens
+
+//Estilos
 import styles from "../styles/login.module.css";
 
+//Pagina de login
 export default function Login() {
   return (
     <>
@@ -13,7 +19,7 @@ export default function Login() {
       <div className={styles.container}>
         <div className={styles.sideLeft}>
           <div className={styles.contentLogo}>
-            <img src="pack.png" width="200px" alt="Pacote" />
+            <img src='/public/pack.png' width="200px" alt="Pacote" />
             <h1>NOME</h1>
           </div>
 

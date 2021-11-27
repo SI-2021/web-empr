@@ -6,7 +6,8 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 
-export function Status({state}){
+//Componente de status
+export function Status({ state }) {
   function statusDelivery() {
     switch (state) {
       case "delivered":
@@ -54,6 +55,6 @@ export function Status({state}){
     }
   }
 
-  return(statusDelivery())
+  return (statusDelivery())
 
 }

@@ -2,9 +2,11 @@ import { Status } from '../components/Status';
 import { Menu } from '../components/Menu';
 import { Path } from '../components/Path';
 
+//Estilos
 import styles from '../styles/deliveries.module.css';
 
-export default function Deliveries(params){
+//Pagina de entregas
+export default function Deliveries(params) {
   const object = {
     name: 'Objeto X',
     type: "Objeto Frágil",
@@ -51,7 +53,7 @@ export default function Deliveries(params){
   }
 
 
-  return(<>
+  return (<>
     <head>
       <title>Destalhes | Pack Delivery</title>
     </head>
@@ -61,7 +63,7 @@ export default function Deliveries(params){
       <div className={styles.container}>
         <header>
           <h1>{object.name}</h1>
-          <Status state={delivery.status}/>
+          <Status state={delivery.status} />
         </header>
 
         <main>
@@ -92,14 +94,14 @@ export default function Deliveries(params){
           <h2>Trânsito do objeto</h2>
 
           <ul>
-            {delivery.trafficHistory.map( (item, index) => {
-              return(<li key={index}>{item.description} - {item.hour} - {item.date}</li>)
+            {delivery.trafficHistory.map((item, index) => {
+              return (<li key={index}>{item.description} - {item.hour} - {item.date}</li>)
             })}
           </ul>
         </article>
 
         <footer>
-          <Path value={Math.floor((delivery.timeLeft/delivery.totalTime)*100)} status={delivery.status} />
+          <Path value={Math.floor((delivery.timeLeft / delivery.totalTime) * 100)} status={delivery.status} />
           <span>Previsão de entrega em {delivery.timeLeft} min.</span>
         </footer>
       </div>

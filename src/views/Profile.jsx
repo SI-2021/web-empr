@@ -13,6 +13,7 @@ import { TextField, Button } from "@material-ui/core";
 //Estilos
 import styles from "../styles/profile.module.css";
 
+//Pagina de perfil
 export default function Profile() {
   const history = useHistory();
 

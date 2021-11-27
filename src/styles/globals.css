@@ -26,6 +26,9 @@ body {
   background: var(--background) !important;
 }
 
+.MuiDrawer-paperAnchorDockedLeft {
+  border-right: none !important;
+}
 
 /* Components tela de postagem */
 .Mui-selected {

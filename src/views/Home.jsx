@@ -1,8 +1,10 @@
 import { Menu } from "../components/Menu";
 import { Delivery } from "../components/Delivery";
 
+//estilos
 import styles from "../styles/home.module.css";
 
+//pagina home
 export default function Home() {
   return (
     <>

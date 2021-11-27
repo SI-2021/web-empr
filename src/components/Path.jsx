@@ -6,6 +6,7 @@ import truckImg from "../res/truck.svg";
 import loadingTruckImg from "../res/loading-truck.svg";
 import flagImg from "../res/flag.svg";
 
+//Componente de trajeto
 export function Path(value, status) {
   const [valueBar, setValueBar] = useState();
 
