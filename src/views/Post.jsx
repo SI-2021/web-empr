@@ -71,17 +71,17 @@ export default function Post() {
   }
 
   const children = [
-    <ToggleButton value="rectangular" key="rectangular" sx={btnShapeStyles}>
+    <ToggleButton id="rectangular" value="rectangular" key="rectangular" sx={btnShapeStyles}>
       <img src="rectangle.svg" alt="Retângulo" />
       <span>Retângulo</span>
     </ToggleButton>,
 
-    <ToggleButton value="cylinder" key="cylinder" sx={btnShapeStyles}>
+    <ToggleButton id="cylinder" value="cylinder" key="cylinder" sx={btnShapeStyles}>
       <img src="circle.svg" alt="Cilindro" />
       <span>Cilindro</span>
     </ToggleButton>,
 
-    <ToggleButton value="trigonal" key="trigonal" sx={btnShapeStyles}>
+    <ToggleButton id="trigonal" value="trigonal" key="trigonal" sx={btnShapeStyles}>
       <img src="triangle.svg" alt="Triângulo" />
       <span>Triângulo</span>
     </ToggleButton>,
