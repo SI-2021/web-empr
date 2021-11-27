@@ -3,8 +3,6 @@ import * as React from "react";
 //Componentes
 import LoginUI from "../components/LoginUI";
 
-//Imagens
-
 //Estilos
 import styles from "../styles/login.module.css";
 
@@ -19,7 +17,7 @@ export default function Login() {
       <div className={styles.container}>
         <div className={styles.sideLeft}>
           <div className={styles.contentLogo}>
-            <img src='/public/pack.png' width="200px" alt="Pacote" />
+            <img src='pack.svg' width="200px" alt="Pacote" />
             <h1>NOME</h1>
           </div>
 
