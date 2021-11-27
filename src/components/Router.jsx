@@ -8,6 +8,7 @@ import Post from "../views/Post";
 import Pay from "../views/Payments";
 import Deliveries from "../views/Deliveries";
 
+//Componente de rota
 export default function Router() {
   return (
     <Switch>
@@ -16,7 +17,7 @@ export default function Router() {
       <Route path="/perfil" component={Profile} />
       <Route path="/pagamentos" component={Pay} />
       <Route path="/postagem" component={Post} />
-      <Route path='/entregas/:id' component={Deliveries}/>
+      <Route path='/entregas/:id' component={Deliveries} />
     </Switch>
   );
 }

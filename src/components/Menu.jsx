@@ -6,9 +6,9 @@ import auth from '../services/auth';
 //Material UI
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemButton from "@material-ui/core/ListItemButton";
+import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
+import ListItemText from "@mui/material/ListItemButton";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import { Menu as MenuAppBar, MenuItem } from "@material-ui/core";
@@ -20,11 +20,12 @@ import {
   AttachMoney as MoneyIcon,
   AccountCircle as AccountIcon,
   ChevronLeft as ChevronLeftIcon
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 
 //Estilos
 import styles from "../styles/components/menu.module.css";
 
+//Componente menu
 export function Menu() {
   const history = useHistory();
 
