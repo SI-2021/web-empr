@@ -11,9 +11,9 @@
 }
 
 .firebaseui-idp-text {
+  color: var(--white) !important;
   font-weight: 400 !important;
   font-size: 1rem !important;
-  color: var(--white) !important;
 }
 
 .firebaseui-text {
