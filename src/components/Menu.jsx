@@ -85,7 +85,7 @@ export function Menu() {
             <MenuIcon color="white" fontSize="large" />
           </button>
           <nav>
-            <Link to={"/home"}>Home</Link>
+            <Link className={styles.link} to={"/home"}>Home</Link>
           </nav>
         </div>
 
