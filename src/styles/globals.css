@@ -36,5 +36,5 @@ body {
 }
 
 a {
-  color: var(--white)
+  color: #FFFFFF !important;
 }

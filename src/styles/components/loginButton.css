@@ -1,7 +1,7 @@
 .firebaseui-idp-button,
 .firebaseui-tenant-button,
 .mdl-button {
-  color: var(--white) !important;
+  color: #FFFFFF !important;
   background: var(--color2) !important;
   border-radius: 0.2rem !important;
 }
@@ -10,7 +10,7 @@
   background: var(--color3) !important;
 }
 
-.firebaseui-idp-text {
+.firebaseui-idp-google>.firebaseui-idp-text, .firebaseui-idp-text {
   color: var(--white) !important;
   font-weight: 400 !important;
   font-size: 1rem !important;
