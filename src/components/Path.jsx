@@ -7,17 +7,7 @@ import loadingTruckImg from "../res/loading-truck.svg";
 import flagImg from "../res/flag.svg";
 
 //Componente de trajeto
-export function Path(value, status) {
-  const [valueBar, setValueBar] = useState();
-
-  useEffect(() => {
-    moveProgressBar();
-  }, [moveProgressBar]);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  function moveProgressBar() {
-    setValueBar(`width: ${value}% !important;${valueBar}`);
-  }
+export function Path({ value, status }) {
 
   function chooseIcon() {
     if (status === "waitingForTransport") {
@@ -40,7 +30,7 @@ export function Path(value, status) {
       {chooseIcon()}
       <div className={styles.backPath}></div>
       {true && (
-        <div className={styles.traject}>
+        <div className={styles.traject} style={{ width: `${value}%`, }}>
           <div className={styles.pathInProgress}></div>
           <img className={styles.truck} src={truckImg} alt="Caminhão" />
         </div>

@@ -22,7 +22,7 @@ export default function Home() {
               id={1}
               name={"Teste 2"}
               status={"onCarriage"}
-              timeLeft={50}
+              timeLeft={70}
               totalTime={120}
               course={"Três lagoas, MS"}
             />
@@ -30,8 +30,8 @@ export default function Home() {
               id={2}
               name={"Teste 3"}
               status={"waitingForTransport"}
-              timeLeft={50}
-              totalTime={120}
+              timeLeft={0}
+              totalTime={300}
               course={"Três lagoas, MS"}
             />
             <Delivery
