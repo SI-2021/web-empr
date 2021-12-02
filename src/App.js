@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import Router from "./components/Router";
-import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   //Color Theme Material UI
   palette: {
     primary: {

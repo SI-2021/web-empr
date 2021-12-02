@@ -287,7 +287,6 @@ export default function Profile() {
 
                 <div className={styles.btnNope}>
                   <Button
-                    variant="text"
                     color="error"
                     onClick={disableDeliveryman}
                   >
@@ -296,9 +295,10 @@ export default function Profile() {
                 </div>
               </>
             ) : (
-              <div className={styles.btnBox}>
+              <div className={styles.btnsBotton}>
                 <Button
                   variant="contained"
+                  color="primary"
                   onClick={() => setIsDeliveryman(true)}
                 >
                   QUERO ENTREGAR

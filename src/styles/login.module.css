@@ -48,7 +48,9 @@
 }
 
 .sideRight p {
-  font-weight: lighter;
+  max-width: 50%;
+  font-weight: 400;
+  text-align: center;
 }
 
 .buttons {

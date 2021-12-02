@@ -25,7 +25,7 @@ export default function Login() {
         </div>
 
         <div className={styles.sideRight}>
-          <p>Breve descrição...</p>
+          <p>Entregando seu pacote, com a honra que ele merece.</p>
 
           <LoginUI />
         </div>

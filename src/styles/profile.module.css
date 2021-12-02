@@ -29,6 +29,7 @@
 .sides {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   padding: 2rem 2rem;
   gap: 1.75rem;
@@ -59,12 +60,22 @@ span {
 }
 
 .btnBack {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
   position: absolute;
-  bottom: -1rem;
+
+  bottom: 2rem;
   align-self: flex-end;
 }
 
 .btnNope {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
   position: absolute;
-  bottom: -1rem;
+
+  bottom: 2rem;
 }
