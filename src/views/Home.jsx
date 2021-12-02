@@ -19,6 +19,14 @@ export default function Home() {
           <div className={styles.contents}>
             <h1 className={styles.title}>Entregas em andamento</h1>
             <Delivery
+              id={0}
+              name={"Teste"}
+              status={"onCarriage"}
+              timeLeft={0}
+              totalTime={120}
+              course={"Três lagoas, MS"}
+            />
+            <Delivery
               id={1}
               name={"Teste 2"}
               status={"onCarriage"}
@@ -30,7 +38,7 @@ export default function Home() {
               id={2}
               name={"Teste 3"}
               status={"waitingForTransport"}
-              timeLeft={0}
+              timeLeft={300}
               totalTime={300}
               course={"Três lagoas, MS"}
             />
@@ -38,17 +46,12 @@ export default function Home() {
               id={3}
               name={"Teste 4"}
               status={"lookingForDelivery"}
-              timeLeft={50}
-              totalTime={120}
               course={"Três lagoas, MS"}
             />
             <Delivery
               id={4}
               name={"Teste 5"}
               status={"random"}
-              timeLeft={50}
-              totalTime={120}
-              course={"Três lagoas, MS"}
             />
           </div>
           <div className={styles.contents}>
@@ -57,17 +60,11 @@ export default function Home() {
               id={5}
               name={"Teste 1"}
               status={"delivered"}
-              timeLeft={50}
-              totalTime={120}
-              course={"Três lagoas, MS"}
             />
             <Delivery
               id={6}
               name={"Teste 5"}
               status={"calledOff"}
-              timeLeft={50}
-              totalTime={120}
-              course={"Três lagoas, MS"}
             />
           </div>
         </div>

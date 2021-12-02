@@ -22,15 +22,15 @@ export function Path({ value, status }) {
         value > 5 && <div className={styles.square}></div>
       )}
       <div className={styles.backPath}></div>
-      {true && (
+      {status === "onCarriage" && (
         <div className={styles.traject} style={{ width: `${value}%`, }}>
           <div className={styles.pathInProgress}></div>
-          {status === "onCarriage" && <img className={styles.truck} src={truckImg} alt="Caminhão" />}
+          {(status === "onCarriage" && value < 100) && <img className={styles.truck} src={truckImg} alt="Caminhão" />}
         </div>
       )}
       {status === "waitingForTransport" ? <img className={styles.flag} src={blackFlagImg} alt="Bandeira" />
-        : status === "onCarriage" ? <img className={styles.flag} src={grayFlagImg} alt="Bandeira" />
-          : <img className={styles.flag} src={greenFlagImg} alt="Bandeira" />
+        : (status === "onCarriage" && value < 100) ? <img className={styles.flag} src={grayFlagImg} alt="Bandeira" />
+          : value === 100 && <img className={styles.flag} src={greenFlagImg} alt="Bandeira" />
       }
     </div>
   );

@@ -27,7 +27,7 @@ export function Delivery({ id, name, status, timeLeft, totalTime, course }) {
               </div>
             </main>
             <footer>
-              <Path value={Math.floor((timeLeft / totalTime) * 100)} status={status} />
+              <Path value={Math.floor(((totalTime - timeLeft) / totalTime) * 100)} status={status} />
             </footer>
           </>
         )}
