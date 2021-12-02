@@ -33,7 +33,9 @@ export default function Logar() {
               user = data;
             }
 
-            history.push("/home", { user });
+            user.id = authResult.user.uid;
+            localStorage.setItem("user", JSON.stringify(user));
+            history.push("/home");
           }
         );
 
