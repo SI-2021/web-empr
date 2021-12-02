@@ -1,12 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
 import Router from "./components/Router";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
 
-const theme = createTheme({
+const theme = createMuiTheme({
   //Color Theme Material UI
   palette: {
     primary: {
-      main: "#033E8C"
+      main: '#033E8C'
     },
     secondary: {
       main: "#155FBF"
@@ -22,10 +22,10 @@ const theme = createTheme({
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }

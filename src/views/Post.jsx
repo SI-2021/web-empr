@@ -472,6 +472,7 @@ export default function Post() {
               </Button>
               <Button
                 variant="contained"
+                color="primary"
                 onClick={cadastrarPostagem}
               >
                 Salvar
