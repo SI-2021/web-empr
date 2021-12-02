@@ -91,7 +91,7 @@ export function Menu() {
 
         <div className={styles.sideRight}>
           <IconButton size="large" onClick={handleMenu} color="white">
-            <AccountIcon />
+            <AccountIcon color="white" />
           </IconButton>
           <MenuAppBar
             id="menu-appbar"
